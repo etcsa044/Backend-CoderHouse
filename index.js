@@ -30,7 +30,7 @@ const productManager = new ProductManager;
 // productManager.addProduct(products[4]);
 // productManager.addProduct(products[5]);
 
-// console.log(await productManager.getProducts());
+console.log(await productManager.getProducts());
 
 // productManager.getProductByID(1);
 // productManager.unpdateProduct(1,24500);

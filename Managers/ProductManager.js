@@ -5,7 +5,7 @@ import fs from "fs";
 export default class ProductManager {
 
     constructor() {
-        this.path = "./files/products.txt"
+        this.path = "./files/products.json"
     }
 
 
