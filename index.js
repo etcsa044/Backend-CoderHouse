@@ -23,17 +23,30 @@ const productManager = new ProductManager;
 //     stock: 25
 // });
 
-// productManager.addProduct(products[3]);
+// const adddedProd = [];
+
+
+
 // productManager.addProduct(products[0]);
 // productManager.addProduct(products[1]);
 // productManager.addProduct(products[2]);
+// productManager.addProduct(products[3]);
 // productManager.addProduct(products[4]);
 // productManager.addProduct(products[5]);
+// productManager.addProduct(products[6]);
+// productManager.addProduct(products[7]);  
+// productManager.addProduct(products[8]);
+// productManager.addProduct(products[9]);
+// productManager.addProduct(products[10]);
+// productManager.addProduct(products[11]);
+// productManager.addProduct(products[12]);
+// productManager.addProduct(products[13]);
+// productManager.addProduct(products[14]);
 
-console.log(await productManager.getProducts());
+// console.log(await productManager.getProducts());
 
 // productManager.getProductByID(1);
-// productManager.unpdateProduct(1,24500);
+// productManager.updateProduct(1,24500);
 // productManager.deleteProduct(1);
 
 

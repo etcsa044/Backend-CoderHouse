@@ -11,14 +11,18 @@ export default class ProductManager {
 
 
     // Function to Get
-    getProducts = async () => {  
+    getProducts = async () => {
+        
+        try {
             if (fs.existsSync(this.path)) {
                 const data = await fs.promises.readFile(this.path, "utf-8");
                 const products = JSON.parse(data);
                 return products;
-            }
-            
-            return [];
+            }            
+            return [];            
+        } catch (error) {            
+         console.log(error);
+        }            
     };
 
 
@@ -68,12 +72,11 @@ export default class ProductManager {
         const stringProducts = await fs.promises.readFile(this.path, "utf-8");
         const parsedProducts = JSON.parse(stringProducts);
         // console.log("desde el getbyID ", parsedProducts)
-        const gettedProduct = parsedProducts.find(e=>e.id === id) ?? "Product Not Found"
-        console.log(gettedProduct);
-        
+        const gettedProduct = parsedProducts.find(e=>e.id === id) ?? "400 - Product Not Found"
+        return gettedProduct;        
     }
 
-    unpdateProduct = async (id, price) => {
+    updateProduct = async (id, price) => {
 
         const parsedProducts = await this.getProducts();
 
