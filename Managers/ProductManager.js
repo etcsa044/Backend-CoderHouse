@@ -5,24 +5,24 @@ import fs from "fs";
 export default class ProductManager {
 
     constructor() {
-        this.path = "./files/products.json"
+        this.path = "./files/products.json";
     }
 
 
 
     // Function to Get
     getProducts = async () => {
-        
+
         try {
             if (fs.existsSync(this.path)) {
                 const data = await fs.promises.readFile(this.path, "utf-8");
                 const products = JSON.parse(data);
                 return products;
-            }            
-            return [];            
-        } catch (error) {            
-         console.log(error);
-        }            
+            }
+            return [];
+        } catch (error) {
+            console.log(error);
+        }
     };
 
 
@@ -39,7 +39,7 @@ export default class ProductManager {
 
             if (codeValidation) {
                 console.log("El codigo del producto ya existe")
-                return
+                return 400
             }
 
             // Asignacion ID autoIncrementable:
@@ -54,10 +54,9 @@ export default class ProductManager {
             products.push(product)
 
             const jsonProducts = JSON.stringify(products, null, "\t");
-
-
             await fs.promises.writeFile(this.path, jsonProducts);
 
+            return 200
 
         } catch (error) {
             console.log("fallo en el addProduct() ", error)
@@ -71,30 +70,35 @@ export default class ProductManager {
     getProductByID = async (id) => {
         const stringProducts = await fs.promises.readFile(this.path, "utf-8");
         const parsedProducts = JSON.parse(stringProducts);
-        // console.log("desde el getbyID ", parsedProducts)
-        const gettedProduct = parsedProducts.find(e=>e.id === id) ?? "400 - Product Not Found"
-        return gettedProduct;        
+        const gettedProduct = parsedProducts.find(e => e.id === id) ?? "400 - Product Not Found"
+        return gettedProduct;
     }
 
-    updateProduct = async (id, price) => {
+    updateProduct = async (id, product) => {
 
-        const parsedProducts = await this.getProducts();
+        try {
+            const idSelected = parseInt(id.pid);
 
-        const selectedProduct = parsedProducts.find(e => e.id === id);
-        
-        selectedProduct.price = price;
-        
-        const updatedProducts = parsedProducts.filter(e => e.id != id )
-        
+            const parsedProducts = await this.getProducts();
+            product.id = idSelected;
 
-        updatedProducts.push(selectedProduct);
-        
+            const updatedProducts = parsedProducts.filter(e => e.id != idSelected)
 
-        const stringifyUpdatedProducts = JSON.stringify(updatedProducts,null,"\t");
+            updatedProducts.push(product);
 
-        await fs.promises.writeFile(this.path,stringifyUpdatedProducts);
 
-        console.log("listado Actualizado Correctamente")
+            const stringifyUpdatedProducts = JSON.stringify(updatedProducts, null, "\t");
+
+            await fs.promises.writeFile(this.path, stringifyUpdatedProducts);
+
+            console.log("producto Actualizado Correctamente")
+            return 200;
+        } catch (error) {
+            console.log(error)
+            return 500
+        }
+
+
     };
 
 
@@ -104,18 +108,20 @@ export default class ProductManager {
 
             const parsedProducts = await this.getProducts();
 
-            if(!parsedProducts.some(e => e.id === id)){
+            if (!parsedProducts.some(e => e.id === id)) {
                 console.log("Producto no encontrado, verifique el `ID`")
-                return
+                return 400
             }
 
             const updatedProducts = parsedProducts.filter(e => e.id != id);
-            const stringifyUpdatedProducts = JSON.stringify(updatedProducts,null,"\t");
-            await fs.promises.writeFile(this.path,stringifyUpdatedProducts);
+            const stringifyUpdatedProducts = JSON.stringify(updatedProducts, null, "\t");
+            await fs.promises.writeFile(this.path, stringifyUpdatedProducts);
             console.log("Producto Borrado Correctamente");
-            
+            return 200
+
         } catch (error) {
-            console.log ("el producto seleccionado no se encontró")
+            console.log("el producto seleccionado no se encontró")
+            return 400
         }
 
     }

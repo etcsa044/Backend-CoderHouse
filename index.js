@@ -1,7 +1,7 @@
 // imports
-import ProductManager from "./Managers/ProductManager.js";
-import { products } from "./productsApi/mockProducts.js";
-
+// import ProductManager from "./Managers/ProductManager.js";
+// import { products } from "./productsApi/mockProducts.js";
+// 
 
 
 const contex = async() =>{
@@ -9,9 +9,9 @@ const contex = async() =>{
 
 
 
-// TESTING: 
+// TESTING PRODUCT MANAGER: 
 
-const productManager = new ProductManager;
+// const productManager = new ProductManager;
 // console.log(await productManager.getProducts());
 
 // productManager.addProduct({
@@ -24,9 +24,6 @@ const productManager = new ProductManager;
 // });
 
 // const adddedProd = [];
-
-
-
 // productManager.addProduct(products[0]);
 // productManager.addProduct(products[1]);
 // productManager.addProduct(products[2]);
@@ -48,9 +45,12 @@ const productManager = new ProductManager;
 // productManager.getProductByID(1);
 // productManager.updateProduct(1,24500);
 // productManager.deleteProduct(1);
-
-
 // TESTING OK!
+
+// TESTING CART MANAGER:
+
+
+
 
 }
 

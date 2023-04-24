@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/api/products" method="POST" enctype="multipart/form-data">
+        <!-- title -->
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title">
+
+        <!-- description  -->
+        <label for="description">description</label>
+        <input type="text" name="description" id="description">
+        
+        <!-- price -->
+        <label for="price">Price</label>
+        <input type="number" name="price" id="price">
+        
+        <!-- thumbnail -->
+        <label for="thumbnail">Image</label>
+        <input type="file" name="thumbnail" id="thumbnail">
+        
+        <!-- code -->
+        <label for="code">Code</label>
+        <input type="text" name="code" id="code">
+        
+        <!-- status -->
+        <label for="status">Status</label>
+        <input type="radio" name="status" id="statusTrue" value="true">
+        <input type="radio" name="status" id="statusFalse" value="false">
+
+        <!-- Submit -->
+        <input type="submit">
+    </form>
+</body>
+</html>
