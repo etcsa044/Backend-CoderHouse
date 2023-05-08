@@ -1,0 +1,54 @@
+<h1>HandleBars</h1>
+
+<section>
+    <h2>Prueba de webSockets</h2>
+    <input type="text" id="textbox">
+    <p id="logs"></p>
+</section>
+
+
+<form action="/api/products" method="POST" enctype="multipart/form-data">
+    <!-- title -->
+    <label for="title">{{label}}</label>
+    <input type="text" name="title" id="title">
+    <br>
+    <br>
+    <!-- description  -->
+    <label for="description">description</label>
+    <input type="text" name="description" id="description">
+    <br>
+    <br>
+    <!-- price -->
+    <label for="price">Price</label>
+    <input type="number" name="price" id="price">
+    <br>
+    <br>
+    <!-- thumbnail -->
+    <label for="thumbnail">thumbnail</label>
+    <input type="file" name="thumbnail" id="thumbnail">
+    <br>
+    <br>
+    <!-- code -->
+    <label for="code">Code</label>
+    <input type="text" name="code" id="code">
+    <br>
+    <br>
+    <!-- status -->
+    <label for="status">Status</label>
+    <label for="statusTrue">true</label>
+    <input type="radio" name="status" id="statusTrue" value="true">
+    <label for="statusFalse">true</label>
+    <input type="radio" name="status" id="statusFalse" value="false">
+    <br>
+    <br>
+    <!-- Category -->
+    <label for="category">Category</label>
+    <input type="text" name="category" id="category">
+    <br>
+    <br>
+    <!-- Submit -->
+    <input type="submit">
+</form>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/home.js"></script>

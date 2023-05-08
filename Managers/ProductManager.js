@@ -13,7 +13,7 @@ export default class ProductManager {
     // Function to Get
     getProducts = async () => {
 
-        try {
+        try {   
             if (fs.existsSync(this.path)) {
                 const data = await fs.promises.readFile(this.path, "utf-8");
                 const products = JSON.parse(data);
